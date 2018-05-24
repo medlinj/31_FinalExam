@@ -2,8 +2,8 @@
 Final exam, problem 3.
 
 Authors: David Mutchler, Dave Fisher, Matt Boutell, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and JD Medlin.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 
 def main():
@@ -87,6 +87,36 @@ And this one for n=14:
     #   print Xs for the spaces until you figure out where the problem is
     #   (and then change the Xs back to spaces).
     # ------------------------------------------------------------------
+    c = 0
+    f = 0
+    for k in range(n):
+        for j in range(n * 2 + 4):
+            if j < n - k - 1:
+                print(' ', end='')
+            if j >= n - k - 1 and j < n:
+                c = c + 1
+                if c >= 10:
+                    c = c - 10
+                print(c, end='')
+            if j == n:
+                print(' ', end='')
+            if j > n and j <= n + k + 2:
+                print('*', end='')
+            if j == n + k + 3:
+                print(' ', end='')
+            if j > n + k + 3:
+                x = n - k - f
+                f = f + 1
+                if x >= 10:
+                    x = x - 10
+                if x < 0:
+                    x = x * -1
+                print(x, end='')
+        c = 0
+        f = 0
+        print()
+
+
 
 
 # ----------------------------------------------------------------------
