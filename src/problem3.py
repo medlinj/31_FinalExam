@@ -93,10 +93,38 @@ def problem3(point, circle1, circle2, window):
       :type window:    rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     # ------------------------------------------------------------------
+    circle1.attach_to(window)
+    circle2.attach_to(window)
+    point.attach_to(window)
 
+    line1 = rg.Line(point, rg.Point(circle1.center.x, circle1.center.y))
+    line1.color = circle1.fill_color
+    line1.attach_to(window)
+
+    line2 = rg.Line(rg.Point(circle1.center.x, circle1.center.y), rg.Point(circle2.center.x, circle2.center.y))
+    line2.color = circle1.fill_color
+    line2.attach_to(window)
+
+    line3 = rg.Line(rg.Point(circle2.center.x, circle2.center.y), point)
+    line3.color = circle1.fill_color
+    line3.attach_to(window)
+
+    line4 = rg.Line(line1.get_midpoint(), line2.get_midpoint())
+    line4.color = circle2.fill_color
+    line4.attach_to(window)
+
+    line5 = rg.Line(line2.get_midpoint(), line3.get_midpoint())
+    line5.color = circle2.fill_color
+    line5.attach_to(window)
+
+    line6 = rg.Line(line3.get_midpoint(), line1.get_midpoint())
+    line6.color = circle2.fill_color
+    line6.attach_to(window)
+
+    window.render()
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
