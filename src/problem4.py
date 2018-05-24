@@ -2,9 +2,9 @@
 Final exam, problem 4.
 
 Authors: David Mutchler, Dave Fisher, Matt Boutell, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.  May 2018.
+         their colleagues and JD Medlin.  May 2018.
 
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 
 ###############################################################################
@@ -20,6 +20,7 @@ Authors: David Mutchler, Dave Fisher, Matt Boutell, Amanda Stouder,
 #
 ###############################################################################
 
+
 def main():
     """ Tests the  Pig  class. """
     # -------------------------------------------------------------------------
@@ -28,6 +29,12 @@ def main():
     #     -- Construct two Pig objects
     #     -- Call each method that you implement below.
     # -------------------------------------------------------------------------
+
+    print(Pig(5).get_weight())
+    print(Pig(5).eat(10))
+    print(Pig(5).eat_for_a_year())
+    print(Pig(2).heavier_pig(10))
+    print(Pig(10).new_pig(12))
 
 
 class Pig(object):
@@ -38,15 +45,24 @@ class Pig(object):
         """
         # TODO: Implement and test this method.
 
+        self.weight = weight
+        self.pig = 0
+
     def get_weight(self):
         """ Returns this Pig's weight. """
         # TODO: Implement and test this method.
+
+        return self.weight
 
     def eat(self, pounds_of_slop):
         """
         Increments this Pig's weight by the given pounds_of_slop.
         """
         # TODO: Implement and test this method.
+
+        for k in range(pounds_of_slop):
+            self.weight = self.weight + 1
+        return self.weight
 
     def eat_for_a_year(self):
         """
@@ -60,6 +76,10 @@ class Pig(object):
         """
         # TODO: Implement and test this method.
 
+        for k in range(365):
+            self.weight = Pig.eat(self, k + 1)
+        return self.weight
+
     def heavier_pig(self, other_pig):
         """
         Returns either this Pig object or the other given Pig object,
@@ -67,12 +87,19 @@ class Pig(object):
         """
         # TODO: Implement and test this method.
 
+        if other_pig > self.weight:
+            return other_pig
+        else:
+            return self.weight
+
     def new_pig(self, other_pig):
         """
         Returns a new Pig whose weight is the weight of the heavier
           of this Pig and the other_Pig.
         """
         # TODO: Implement and test this method.
+        self.pig = self.heavier_pig(other_pig)
+        return self.pig
 
 
 # -----------------------------------------------------------------------------
