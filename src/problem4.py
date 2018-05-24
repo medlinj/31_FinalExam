@@ -31,10 +31,10 @@ def main():
     # -------------------------------------------------------------------------
 
     print(Pig(5).get_weight())  # this should simply be the weight that was put in, so 5
-    print(Pig(5).eat(10))  # should be 10 + (5*1), which is 15
+    print(Pig(5).eat(10))  # should be 10 + 5, which is 15
     print(Pig(0).eat_for_a_year())  # should print 66795, which is all the numbers from 1 to 365 combined
-    print(Pig(5).heavier_pig(10))  # if it prints this: <class '__main__.Pig'>, then it is the object
-    print(Pig(5).new_pig(11))  # if it prints this: <class '__main__.Pig'>, then it is the object
+    print(Pig(5).heavier_pig(100))  # if it prints this: <class '__main__.Pig'>, then it is the object
+    print(Pig(5).new_pig(1000000))  # if it prints this: <class '__main__.Pig'>, then it is the object
 
 
 class Pig(object):
@@ -85,11 +85,10 @@ class Pig(object):
         whichever is heavier.
         """
         # DONE: Implement and test this method.
-
-        if other_pig > self.eat_for_a_year():
-            return other_pig
+        if other_pig > self.weight:
+            return Pig(other_pig)
         else:
-            return Pig
+            return Pig(self.weight)
 
     def new_pig(self, other_pig):
         """
@@ -97,8 +96,13 @@ class Pig(object):
           of this Pig and the other_Pig.
         """
         # DONE: Implement and test this method.
-        self.pig_new = self.heavier_pig(other_pig)
-        return self.pig_new
+
+        if other_pig > self.weight:
+            newp = Pig(other_pig)
+            return newp
+        else:
+            new = Pig(self.weight)
+            return new
 
 
 # -----------------------------------------------------------------------------
