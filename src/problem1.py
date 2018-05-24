@@ -20,7 +20,7 @@ def main():
     print('Un-comment the calls in MAIN one by one')
     print(' to run the testing code as you complete the TODOs.')
     run_test_problem1a()
-    # run_test_problem1b()
+    run_test_problem1b()
 
 
 def run_test_problem1a():
@@ -90,7 +90,7 @@ def problem1a(numbers):
       :type numbers:  [int]
     """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     # -------------------------------------------------------------------------
 
@@ -172,6 +172,11 @@ def problem1b(numbers):
     #          Tests have been written for you (above).
     # -------------------------------------------------------------------------
 
+    total = 0
+    for k in range(len(numbers)):
+        if k >= len(numbers)/3 and k <= len(numbers) - len(numbers)/3 - 1:
+            total = total + numbers[k]
+    return total
 
 ###############################################################################
 # Our tests use the following to print error messages in red.
